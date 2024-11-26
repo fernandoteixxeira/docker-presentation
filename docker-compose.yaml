@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  mongo:
+    container_name: mongodb
+    image: mongo
+    env_file:
+      - .env
+    volumes:
+      - ./docker/mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - mongo-volume:/data/db
+    ports:
+      - "27017-27019:27017-27019"
+    networks:
+      - local-network
+
+  docker-app:
+    container_name: docker-app
+    build:
+      context: .
+      network: host
+      args:
+        APP_NAME: docker-app-0.0.1-SNAPSHOT
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    networks:
+      - local-network
+
+networks:
+  local-network:
+    driver: bridge
+
+volumes:
+  mongo-volume:

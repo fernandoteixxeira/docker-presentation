@@ -1,0 +1,1 @@
+docker rmi ubuntu:24.04

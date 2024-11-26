@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: docker-app
+  data.mongodb:
+    uri: mongodb://${MONGO_INITDB_USERNAME}:${MONGO_INITDB_PASSWORD}@${MONGODB_HOST}:${MONGODB_PORT}/${MONGO_INITDB_DATABASE}

@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  hello-world:
+    image: hello-world
+    volumes:
+      - hello-world-volume:/data
+    networks:
+      - local-network
+
+networks:
+  local-network:
+    driver: bridge
+
+volumes:
+  hello-world-volume:

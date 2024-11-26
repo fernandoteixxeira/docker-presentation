@@ -1,0 +1,1 @@
+docker build -t docker-app:1.0.0 --build-arg APP_NAME=docker-app-0.0.1-SNAPSHOT .
